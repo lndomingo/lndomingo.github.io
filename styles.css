@@ -1,119 +1,239 @@
+/* General body and structure */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    background-color: #f8f9fa;
-    color: #343a40;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
 }
 
 header {
-    margin-bottom: 1rem;
-}
-
-header .profile-img {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border: 4px solid #9d2d83;
-}
-
-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-    color: #9d2d83;
-    animation: fadeIn 1s ease-in-out;
-}
-
-header p {
-    font-size: 1.1rem;
-    color: #6c757d;
-}
-
-.nav-tabs .nav-link.active {
-    background-color: #9d2d83;
+    background: #000;
     color: #fff;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    padding: 60px 20px;
+    text-align: center;
 }
 
-.nav-tabs .nav-link {
-    color: #9d2d83;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+nav {
+    position: sticky;
+    top: 0;
+    background: #222;
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    z-index: 1000;
 }
 
-.tab-content {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
+nav a {
+    color: #fff;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    pointer-events: auto;
 }
 
-.tab-content h2 {
-    font-size: 1.75rem;
-    border-bottom: 2px solid #9d2d83;
-    padding-bottom: 0.5rem;
-    margin-top: 0;
-    color: #9d2d83;
+nav a:hover {
+    color: #00adb5;
 }
 
-.tab-content ul {
-    list-style: none;
-    padding-left: 0;
+section {
+    padding: 40px 20px;
+    max-width: 1000px;
+    margin: auto;
 }
 
-.tab-content ul li {
-    margin: 1rem 0;
+.project {
+    background: #f9f9f9;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border: 1px solid #ccc;
+    padding: 15px;
+    background-color: #fff;
+    max-width: 800px;
+    margin: 20px auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* Ensure images and content wrap correctly */
 }
 
-.tab-content ul li h3 {
-    font-size: 1.25rem;
-    margin: 0;
-    color: #9d2d83;
+.project:hover {
+    transform: translateY(-5px);
 }
 
-.tab-content ul li p {
-    margin: 0.25rem 0;
-    color: #343a40;
+h2 {
+    color: #00adb5;
+    margin-bottom: 10px;
 }
 
+footer {
+    background: #000;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
 
 a {
-    color: #9d2d83;
+    color: #00adb5;
+    text-decoration: none;
 }
 
 a:hover {
-    color: #b4237f;
+    text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2rem;
+/* Tag buttons styling */
+.tag-buttons {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.tag-buttons button {
+    background: #00adb5;
+    color: #fff;
+    border: none;
+    padding: 12px 24px; /* Adjust button padding for better spacing */
+    margin: 8px; /* Space between buttons */
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.tag-buttons button:hover {
+    background: #007d7f;
+    transform: translateY(-2px); /* Slight hover effect for better interaction */
+}
+
+.tag-buttons button:active {
+    transform: translateY(1px); /* Button press effect */
+}
+
+/* Default display of all projects */
+.project {
+    display: block;
+}
+
+/* Filter visibility based on tag button clicks (JS should toggle these classes) */
+.project[data-category*="marketing"] {
+    display: none;
+}
+
+.project[data-category*="data"] {
+    display: none;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 600px) {
+    nav a {
+        display: block;
+        margin: 10px 0;
     }
-    
-    header p {
-        font-size: 1rem;
+
+    .tag-buttons button {
+        padding: 10px 20px; /* Adjust button size for smaller screens */
     }
 }
 
-.profile-img {
-    border: 5px solid #fff;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease-in-out;
+/* skills */
+.skills-category {
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.profile-img:hover {
+.skills-category p {
+    font-size: 1.1em;
+    margin: 10px 0;
+}
+
+.skills-category p strong {
+    color: #333;
+}
+
+h3 {
+    margin-top: 30px;
+    font-size: 1.4em;
+    color: #333;
+}
+
+/* Slideshow Container */
+.slideshow-container {
+    width: 100%;
+    max-width: 600px; /* Limit the size of the slideshow */
+    margin: 0 auto; /* Center the slideshow */
+    position: relative;
+    text-align: center; /* Center the content inside the container */
+}
+
+/* Slides */
+.mySlides {
+    display: none;
+    width: 100%; /* Make slides take the full width of the container */
+    height: 150px; /* Fixed height for each slide */
+    margin: 0 auto;
+    position: relative; /* Ensure images are properly aligned within each slide */
+}
+
+/* Image styling */
+.mySlides img {
+    width: 100%; /* Scale the image to fit the container's width */
+    height: auto; /* Keep the aspect ratio intact */
+    max-height: 150px; /* Ensure the image does not exceed the height of the container */
+    object-fit: cover; /* Ensure the image covers the container's area without stretching */
+    border-radius: 8px; /* Optional: Add rounded corners */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+/* Blog tags */
+.tags { margin-top: 10px; }
+        .tag { display: inline-block; background: #00adb5; color: #fff; padding: 5px 10px; border-radius: 5px; margin: 5px; cursor: pointer; font-size: 0.9em; }
+        .tag:hover { background: #007a87; }
+
+
+.highlight {
+        background-color: gray; }
+
+/* Blog Page Turn */
+#pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#pagination button {
+    background-color: #00acb5;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#pagination button:hover {
+    background-color: #008a90;
     transform: scale(1.05);
 }
 
-.tab-pane {
-    animation: fadeInUp 1s ease forwards;
-    opacity: 0;
-}
-
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+#pagination button:active {
+    transform: scale(0.95);
 }

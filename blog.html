@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larissa Domingo's Blog</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+    <style>
+        .highlight {
+            background-color: #00acb57f;
+        }
+        #search {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Blog!</h1>
+        <p>Insights | Stories | Updates</p>
+    </header>
+
+    <nav>
+        <a href="website.html">Home</a>
+        <a href="website.html#projects">Projects</a>
+        <a href="blog.html">Blog</a>
+        <a href="website.html#contact">Contact</a>
+    </nav>
+
+    <section id="blog">
+        <h2>Filter by Tags:</h2>
+        <input type="text" id="search-input" onkeyup="searchPosts()" placeholder="Search by keyword...">
+        <div class="tags">
+            <span class="tag" onclick="showAllPosts()">All</span>
+            <span class="tag" onclick="filterPosts('Data')">Data Analytics</span>
+            <span class="tag" onclick="filterPosts('Event')">Event</span>
+            <span class="tag" onclick="filterPosts('Marketing')">Marketing</span>
+            <span class="tag" onclick="filterPosts('Personal')">Personal</span>
+            <span class="tag" onclick="filterPosts('School')">School</span>
+            <span class="tag" onclick="filterPosts('Social Media')">Social Media</span>
+        </div>
+        
+        <h2 id="post-heading">Recent Posts</h2>
+
+        <div class="post" data-tags="Personal">
+            <h3 style="margin-bottom: 2px;">Living Life as a Disney Adult</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on February 6, 2025</small>
+            <p>Even on rainy days, Disney still holds it's title as the "Happiest Place on Earth"! 25,000 steps and 19 rides later, I enjoyed the day hanging out with 2/3 of my old college roomies. So blessed to have made such close friendships. #lovethem</p>
+        </div>
+
+        <div class="post" data-tags="Marketing">
+            <h3 style="margin-bottom: 2px;">First Day as Supervisor</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on February 4, 2025</small>
+            <p>Started my first day as a supervisor at my social media job! I'm excited and nervous. Excited for the opportunity to prove my leadership skills, and nervous because I'll be given a lot more responsibility. Wish me luck! #promoted</p>
+        </div>
+
+        <div class="post" data-tags="Personal,School">
+            <h3 style="margin-bottom: 2px;">No More Homework</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on December 5, 2024</small>
+            <p>You mean, I don't have to submit homework to professors anymore? That's crazy. At 4:17 p.m. on 12/5/24, I submitted my #LAST ever project. Felt a little uneventful since all I did was download, upload, then submit for my last assignment, but I'm done! So proud and happy with all I've learned and how much I've grown in college, and ALL the oter schooling prior. #covidgraduate #hiremeplease</p>
+        </div>
+
+        <div class="post" data-tags="Data">
+            <h3 style="margin-bottom: 2px;">The Best Day to Fly is on a Tuesday</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on November 22, 2024</small>
+            <p>Fun, yet stressful day! Met four complete strangers and managed to earn Best Storytelling in today's Data Competition. Python and Tableau continue to amaze me with its ability to manipulate and transform a disorganized dataset into something amazing. I learned from a 5,000 row dataset that Tuesdays are actually the cheapest and least busy day to fly. #themoreyouknow</p>
+        </div>
+
+        <div class="post" data-tags="Data">
+            <h3 style="margin-bottom: 2px;">GIS Day</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on November 20, 2024</small>
+            <p>A year ago today, I had no clue what GIS was and now I'm celebrating it! Happy GIS Day! I celebrated by attending and submitting a project to the GIS Day Story Maps Competition. I heard from panelist, professors, and the Major of Pomona! I also had the opportunity to present and compete in the Story Maps Competition. My team earned second place on our analysis of Introducing Premium Grocery Stores to Orange County, CA. #GISday</p>
+        </div>
+
+        <div class="post" data-tags="Marketing,Social Media">
+            <h3 style="margin-bottom: 2px;">Future in Journalism??</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on November 8, 2024</small>
+            <p>Definitely went out of my comfort zone today! I had the opportunity to host the very #first episode of "Bronco Banter" where I interviewed the ASI President, ASI VP, and some students about finals szn & the ASI Action Plan. I learned so much about student government and what they do directly for students. Check out the results of the interview on Instagram @ASICPP</p>
+        </div>
+
+        <div class="post" data-tags="Event,Personal">
+            <h3 style="margin-bottom: 2px;">I Know the 21st Duck</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on October 16, 2024</small>
+            <p>Got to witness the 'Best Day Ever' for the most impressive 9-year-old I know. Allergic Emma was announced as the 21st Duck at the Anaheim Duck's season home opener. Emma skated on the ice of the Honda Center with the team in front of 17,000+ people while representing the 220 million people worldwide with food allergies. Lucky to be on Team Allergic Emma and that I was there to witness and cheer her on from Section 417. #AllergicEmma</p>
+        </div>
+<!--
+        <div class="post" data-tags="School,Personal">
+            <h3 style="margin-bottom: 2px;">A Decision That Could Affect the Rest of my Life</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on January 11, 2023</small>
+            <p>From Undeclared. To Marketing. To CIS. I am offically double majoring in Marketing AND Computer Information Systems. </p>
+        </div>
+-->
+    </section>
+
+<!--
+    <div id="pagination">
+        <button id="prev-btn">← Previous</button>
+        <button id="next-btn">Next →</button>
+    </div>   
+-->  
+
+    <footer>
+        <p>&copy; 2025 Larissa Domingo. All rights reserved.</p>
+    </footer>
+</body>
+</html>

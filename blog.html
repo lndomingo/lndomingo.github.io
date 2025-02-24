@@ -13,6 +13,12 @@
         #search {
             margin-bottom: 10px;
         }
+
+        /* CSS for hashtag styling */
+        .hashtag {
+            color: #007a87; /* Choose the color you want */
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -103,5 +109,22 @@
     <footer>
         <p>&copy; 2025 Larissa Domingo. All rights reserved.</p>
     </footer>
+
+    <script>
+        // JavaScript to target and color hashtags
+        function highlightHashtags() {
+            const posts = document.querySelectorAll('.post p'); // Target all paragraphs within posts
+
+            posts.forEach(post => {
+                // Replace hashtags with a span and add the 'hashtag' class
+                post.innerHTML = post.innerHTML.replace(/#\w+/g, (match) => {
+                    return `<span class="hashtag">${match}</span>`; // Wrap hashtags with <span> and apply the 'hashtag' class
+                });
+            });
+        }
+
+        // Call the function to apply the changes
+        highlightHashtags();
+    </script>
 </body>
 </html>

@@ -137,3 +137,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     showPage(currentPage);
 });
+
+
+//hamburger toggle
+document.querySelector(".menu-toggle").addEventListener("click", function () {
+    document.querySelector(".nav-links").classList.toggle("active");
+});

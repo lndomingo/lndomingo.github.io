@@ -16,14 +16,17 @@
         <p>Storyteller | Data Analyst | Marketer</p>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="#experience">Experience</a>
-        <a href="#skills">Skills</a>
-        <a href="#projects">Projects</a>
-        <a href="blog.html" target="_self">Blog</a>
-        <a href="#contact">Contact</a>
-    </nav>
+    <nav class="topnav">
+        <div id="myLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="index.html#experience">Experience</a>
+            <a href="index.html#skills">Skills</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="blog.html">Blog</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">&#9776;</a> <!-- Hamburger icon -->
+    </nav>  
 
     <section id="home">
         <h2>About Me</h2>
@@ -610,6 +613,11 @@
         event.preventDefault(); // Prevent default anchor behavior
         window.scrollTo({ top: 0 }); // Smooth scroll to top
         });
+
+        //toggle
+        function toggleMenu() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        }
     </script>
     <script src="script.js"></script>
 

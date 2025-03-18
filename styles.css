@@ -104,8 +104,8 @@ a:hover {
     background: #00adb5;
     color: #fff;
     border: none;
-    padding: 12px 24px; /* Adjust button padding for better spacing */
-    margin: 8px; /* Space between buttons */
+    padding: 12px 24px;
+    margin: 8px;
     cursor: pointer;
     font-weight: bold;
     border-radius: 8px;
@@ -114,11 +114,11 @@ a:hover {
 
 .tag-buttons button:hover {
     background: #007d7f;
-    transform: translateY(-2px); /* Slight hover effect for better interaction */
+    transform: translateY(-2px);
 }
 
 .tag-buttons button:active {
-    transform: translateY(1px); /* Button press effect */
+    transform: translateY(1px);
 }
 
 /* Default display of all projects */
@@ -143,11 +143,11 @@ a:hover {
     }
 
     .tag-buttons button {
-        padding: 10px 20px; /* Adjust button size for smaller screens */
+        padding: 10px 20px;
     }
 }
 
-/* skills */
+/* Skills section */
 .skills-category {
     margin-bottom: 20px;
     background-color: #f9f9f9;
@@ -174,41 +174,56 @@ h3 {
 /* Slideshow Container */
 .slideshow-container {
     width: 100%;
-    max-width: 600px; /* Limit the size of the slideshow */
-    margin: 0 auto; /* Center the slideshow */
+    max-width: 600px;
+    margin: 0 auto;
     position: relative;
-    text-align: center; /* Center the content inside the container */
+    text-align: center;
 }
 
 /* Slides */
 .mySlides {
     display: none;
-    width: 100%; /* Make slides take the full width of the container */
-    height: 150px; /* Fixed height for each slide */
+    width: 100%;
+    height: 150px;
     margin: 0 auto;
-    position: relative; /* Ensure images are properly aligned within each slide */
+    position: relative;
 }
 
 /* Image styling */
 .mySlides img {
-    width: 100%; /* Scale the image to fit the container's width */
-    height: auto; /* Keep the aspect ratio intact */
-    max-height: 150px; /* Ensure the image does not exceed the height of the container */
-    object-fit: cover; /* Ensure the image covers the container's area without stretching */
-    border-radius: 8px; /* Optional: Add rounded corners */
-    margin: 0 auto; /* Center the image horizontally */
+    width: 100%;
+    height: auto;
+    max-height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin: 0 auto;
 }
 
 /* Blog tags */
-.tags { margin-top: 10px; }
-        .tag { display: inline-block; background: #00adb5; color: #fff; padding: 5px 10px; border-radius: 5px; margin: 5px; cursor: pointer; font-size: 0.9em; }
-        .tag:hover { background: #007a87; }
+.tags {
+    margin-top: 10px;
+}
 
+.tag {
+    display: inline-block;
+    background: #00adb5;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.tag:hover {
+    background: #007a87;
+}
 
 .highlight {
-        background-color: gray; }
+    background-color: gray;
+}
 
-/* Blog Page Turn */
+/* Pagination */
 #pagination {
     display: flex;
     justify-content: center;
@@ -238,57 +253,33 @@ h3 {
     transform: scale(0.95);
 }
 
-/*hamburger toggle*/
-.nav-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: #222;
+/* Default display of all projects */
+.project {
+    display: block;
 }
 
-.nav-links {
-    display: flex;
-    gap: 20px;
+/* Menu on larger screens */
+#myLinks {
+    display: block;  /* Ensure menu is visible by default on large screens */
 }
 
-.nav-links a {
-    color: white;
-    text-decoration: none;
+/* Hide the hamburger icon on larger screens */
+.icon {
+    display: none;  /* Hide the hamburger icon by default */
 }
 
-/* Mobile Styling */
-.menu-toggle {
-    display: none; /* Hidden by default */
-    background: none;
-    border: none;
-    font-size: 24px;
-    color: white;
-    cursor: pointer;
-}
-
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block; /* Show toggle button */
+/* Hide the toggle button and show the menu on small screens */
+@media screen and (max-width: 768px) {
+    #myLinks {
+        display: none; /* Hide menu by default on small screens */
     }
 
-    .nav-links {
-        display: none; /* Hide menu */
-        flex-direction: column;
-        position: absolute;
-        top: 50px;
-        right: 0;
-        background: #222;
-        width: 100%;
-        text-align: center;
+    .icon {
+        display: block; /* Show hamburger icon on small screens */
     }
 
-    .nav-links a {
-        display: block;
-        padding: 10px;
-    }
-
-    .nav-links.active {
-        display: flex; /* Show when active */
+    /* When the toggle button is clicked, display the menu */
+    .icon.open + #myLinks {
+        display: block;  /* Show the menu when the button is open */
     }
 }

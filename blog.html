@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Larissa Domingo's Blog</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
     <style>
         .highlight {
             background-color: #00acb57f;
@@ -27,14 +27,18 @@
         <p>Insights | Stories | Updates</p>
     </header>
 
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#experience">Experience</a>
-        <a href="index.html#skills">Skills</a>
-        <a href="index.html#projects">Projects</a>
-        <a href="blog.html">Blog</a>
-        <a href="index.html#contact">Contact</a>
-    </nav>
+    <nav class="topnav">
+        <div id="myLinks">
+            <a href="index.html" class="active">Home</a>
+            <a href="index.html#experience">Experience</a>
+            <a href="index.html#skills">Skills</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="blog.html">Blog</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">&#9776;</a> <!-- Hamburger icon -->
+    </nav>    
+    
 
     <section id="blog">
         <h2>Filter by Tags:</h2>
@@ -51,6 +55,44 @@
         
         <h2 id="post-heading">Recent Posts</h2>
 
+        <div class="post" data-tags="Personal">
+            <h3 style="margin-bottom: 2px;">With Every No, Comes a Yes?</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on March 16, 2025</small>
+            <p>I've learned that with every no, a yes follows. But when is my yes?
+
+                I've been on the job hunt for about three months now, and nothing seems to be sticking. I tailor my resume, craft thoughtful cover letters, and still—silence. No interviews, no callbacks. Just automated rejection emails or, worse, nothing at all.
+                
+                I’m in my 20s, juggling three part-time jobs, yet I still feel unemployed. Working at a coffee shop wasn’t the "big girl" job I imagined for myself. I know I’m a good candidate, but if that’s true, why am I not even getting a chance to prove it?
+                
+                Maybe I need to change something—my approach, my expectations, or even my mindset. Should I start networking more? Rethink my applications? I don’t know the answer yet, but I do know one thing: my #yes is out there. I just have to find it.</p>
+        </div>
+
+        <div class="post" data-tags="Personal, Social Media">
+            <h3 style="margin-bottom: 2px;">What Makes a Candidate Stand Out?</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on March 14, 2025</small>
+            <p>I’ve been conducting interviews for my social media job on campus, and it’s been eye-opening. Seeing what makes a strong applicant—and what doesn’t—has given me a whole new perspective on the hiring process.
+
+                What impresses me the most? Tailored resumes and cover letters that align with the job description. It’s clear when a candidate has put in the effort, and that attention to detail stands out. But beyond the documents, I love when an applicant's passion and enthusiasm come through, even over a screen.
+                
+                Interviewing in-person, however, tells a different story. I’ve learned that a candidate can be #perfect on paper but not necessarily the right fit for the role. Personality, confidence, and how someone carries themselves can make or break an interview.
+                
+                As someone also applying for jobs, this experience has made me reflect: How can I use these insights to refine my own job search? It’s one thing to look great on paper, but how do I ensure that my presence in an interview leaves just as strong of an impression?</p>
+        </div>
+
+        <div class="post" data-tags="Personal, School">
+            <h3 style="margin-bottom: 2px;">Turning Pages Turned my Perspectives</h3>
+            <small style="display: block; margin-top: -2px; color: gray;">Posted on February 28, 2025</small>
+            <p>I just finished I’m Glad My Mom Died by Jennette McCurdy. My first ever personal read, front-to-back. Not for school, not because I had to, but because I wanted to. Does that make me a #booklover now?
+
+                I’ve never been much of a reader. I used to force my way through assigned books in school, skimming pages, hoping I’d absorb enough to get by. But after graduating college, I’ve had more time to sit with myself and ask: Who do I want to be? How do I want to be perceived?
+                
+                I want to be #thatgirl—the one sitting on a park bench in her worn-out jean jacket, lost in a book, fully present in her own world while the sun warms her skin. I want to be independent. Motivated. Smart. The kind of person who reads not just to pass time, but to learn something, to feel something.
+                
+                McCurdy’s book sat on my shelf for three years. Three years of collecting dust, waiting for me to finally pick her up. And when I did, I didn’t expect to feel this connected. The way she writes about trauma, control, and coming to terms with the parts of your past that have shaped you—it hit me harder than I thought it would.
+                
+                Reading can sometimes be viewed as just words on a page. But for me, finishing a chapter felt like a small victory. Like I was unlocking a version of myself I hadn’t met yet. And now, I want more.</p>
+        </div>
+        
         <div class="post" data-tags="Personal">
             <h3 style="margin-bottom: 2px;">Living Life as a Disney Adult</h3>
             <small style="display: block; margin-top: -2px; color: gray;">Posted on February 6, 2025</small>
@@ -113,6 +155,16 @@
     </footer>
 
     <script>
+        // JavaScript to toggle the menu visibility on small screens
+        function toggleMenu() {
+            var links = document.getElementById("myLinks");
+            if (links.style.display === "block") {
+                links.style.display = "none";
+            } else {
+                links.style.display = "block";
+            }
+        }
+
         // JavaScript to target and color hashtags
         function highlightHashtags() {
             const posts = document.querySelectorAll('.post p'); // Target all paragraphs within posts
@@ -120,13 +172,13 @@
             posts.forEach(post => {
                 // Replace hashtags with a span and add the 'hashtag' class
                 post.innerHTML = post.innerHTML.replace(/#\w+/g, (match) => {
-                    return `<span class="hashtag">${match}</span>`; // Wrap hashtags with <span> and apply the 'hashtag' class
+                    return `<span class="hashtag">${match}</span>`;
                 });
             });
         }
 
-        // Call the function to apply the changes
-        highlightHashtags();
+        // Call the highlightHashtags function when the page loads
+        window.onload = highlightHashtags;
     </script>
 </body>
 </html>

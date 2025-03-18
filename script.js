@@ -34,7 +34,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 
-
 //SCROLL
 document.querySelector('nav a[href="#home"]').addEventListener('click', function(event) {
     event.preventDefault(); // Prevent default anchor behavior
@@ -55,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
 
 // Blog search
 function filterPosts(tag) {
@@ -138,8 +136,33 @@ document.addEventListener("DOMContentLoaded", function () {
     showPage(currentPage);
 });
 
+// Toggle the navigation menu for mobile
+function toggleMenu() {
+    var links = document.getElementById("myLinks");
+    if (links.style.display === "block") {
+        links.style.display = "none";
+    } else {
+        links.style.display = "block";
+    }
+}
 
-//hamburger toggle
-document.querySelector(".menu-toggle").addEventListener("click", function () {
-    document.querySelector(".nav-links").classList.toggle("active");
+// Get the necessary elements
+const toggleIcon = document.getElementById('toggleIcon');
+const myLinks = document.getElementById('myLinks');
+
+// Toggle the menu visibility when the icon is clicked
+toggleIcon.addEventListener('click', function() {
+    myLinks.classList.toggle('open');
 });
+
+// Reset the menu when the screen is resized
+window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+        myLinks.classList.remove('open'); // Reset to default (menu shown)
+    }
+});
+
+// To handle initial page load (in case the page is already small and the menu is hidden)
+if (window.innerWidth > 768) {
+    myLinks.classList.remove('open'); // Ensure it's visible by default
+}

@@ -12,41 +12,185 @@ body {
     line-height: 1.6;
 }
 
-header {
-    background: #000;
-    color: #fff;
-    padding: 60px 20px;
-    text-align: center;
-}
 
+
+/* Base nav styling */
 nav {
     position: sticky;
     top: 0;
-    background: #222;
+    background: rgba(34,34,34,0.95);
     padding: 10px 0;
     text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     z-index: 1000;
+    font-family: 'Montserrat', sans-serif;
 }
 
 nav a {
     color: #fff;
-    margin: 0 20px;
+    margin: 0 12px;
+    padding: 8px 18px;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-    pointer-events: auto;
+    font-weight: 600;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+nav a.active {
+    background: #00adb5;
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0,173,181,0.4);
 }
 
 nav a:hover {
+    background: #00adb5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,173,181,0.3);
+    text-decoration: none; /* Ensure hover doesn't underline */
+}
+
+/* Hamburger styling */
+nav .icon {
+    display: none; /* Hidden by default */
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 28px;
+    cursor: pointer;
     color: #00adb5;
 }
+
+/* Responsive: show hamburger & stack links vertically */
+@media screen and (max-width: 768px) {
+    #myLinks {
+        display: none; /* hidden until hamburger clicked */
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px 0;
+    }
+
+    nav .icon {
+        display: inline-block;
+    }
+}
+
 
 section {
     padding: 40px 20px;
     max-width: 1000px;
     margin: auto;
 }
+
+
+/* Experience Section */
+#experience {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  #experience h2 {
+    font-size: 1.8rem;
+    margin: 30px 0 15px;
+    color: #00adb5;
+    text-align: center;
+    position: relative;
+  }
+  
+  #experience h2::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #00adb5;
+    margin: 8px auto 0;
+    border-radius: 2px;
+  }
+  
+  .experience-card {
+    background: #fff;
+    border: 1px solid #eee;
+    border-left: 5px solid #00adb5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  }
+  
+  .experience-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  }
+  
+  .exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+  
+  .exp-role {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  .exp-date {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .exp-company {
+    display: inline-block;
+    font-style: italic;
+    color: #00adb5;
+    margin-bottom: 12px;
+    text-decoration: none;
+    font-size: 0.95rem;
+  }
+  
+  .exp-company:hover {
+    text-decoration: underline;
+  }
+  
+  .experience-card ul {
+    padding-left: 20px;
+    margin: 0;
+  }
+  
+  .experience-card li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
+  /* Tags for Certifications & Accolades */
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .tag-list span {
+    background: #f0fafa;
+    color: #333;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    transition: background 0.2s ease;
+  }
+  
+  .tag-list span:hover {
+    background: #00adb5;
+    color: #fff;
+  }
+  
 
 .project {
     background: #f9f9f9;
@@ -148,28 +292,57 @@ a:hover {
 }
 
 /* Skills section */
-.skills-category {
+/* Block styling */
+.skills-block {
+    background: #fafafa;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  
+  .skills-block h3 {
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+    color: #333;
+    border-left: 4px solid #00adb5;
+    padding-left: 10px;
+  }
+  
+  .skills-category {
     margin-bottom: 20px;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.skills-category p {
-    font-size: 1.1em;
+  }
+  
+  .skills-category h4 {
     margin: 10px 0;
-}
-
-.skills-category p strong {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+  }
+  
+  /* Bubble styling */
+  .skills-bubbles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .skills-bubbles span {
+    background-color: #f2f2f2;
     color: #333;
-}
-
-h3 {
-    margin-top: 30px;
-    font-size: 1.4em;
-    color: #333;
-}
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .skills-bubbles span:hover {
+    background-color: #00adb5;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+  
 
 /* Slideshow Container */
 .slideshow-container {
@@ -283,3 +456,33 @@ h3 {
         display: block;  /* Show the menu when the button is open */
     }
 }
+
+/* === Fun + Creative Footer === */
+footer {
+    text-align: center;
+    margin-top: 60px;
+    padding: 25px 10px;
+    font-size: 1rem;
+    color: #444;
+    background: linear-gradient(135deg, #fff, #f0fafa);
+    border-top: 2px dashed #00adb5;
+    border-radius: 18px 18px 0 0;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.05);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  footer p {
+    margin: 0;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+  
+  footer .name {
+    color: #00adb5;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  
+  footer .name:hover {
+    color: #ff9800;
+  }

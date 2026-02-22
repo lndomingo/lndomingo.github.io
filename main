@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Larissa Domingo | Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+    --primary: #996af1;
+    --bg: #f7f9fc;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: var(--bg);
+    color: #333;
+}
+
+/* NAVIGATION */
+nav {
+    position: sticky;
+    top: 0;
+    background: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    z-index: 100;
+}
+
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    color: #333;
+}
+
+nav a:hover {
+    color: var(--primary);
+}
+
+/* HEADER */
+header {
+    padding: 80px 20px 60px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    background: linear-gradient(90deg, #d16af1, #6c6af1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header p {
+    max-width: 600px;
+    margin: 15px auto 0;
+    opacity: 0.85;
+}
+
+/* SECTION */
+section {
+    padding: 60px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* SEARCH */
+.search-bar {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: 420px;
+    padding: 14px 18px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    font-size: 0.9rem;
+}
+
+.search-wrapper {
+    position: relative;
+    max-width: 420px;
+    margin: auto;
+}
+
+#searchInput {
+    width: 100%;
+    padding: 14px 42px 14px 18px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    font-size: 0.9rem;
+}
+
+#clearSearch {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: #999;
+    cursor: pointer;
+    display: none;
+}
+
+#clearSearch:hover {
+    color: var(--primary);
+}
+
+/* PROJECT GRID */
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.card {
+    background: white;
+    padding: 28px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h3 {
+    margin: 0;
+    color: var(--primary);
+}
+
+.tags {
+    margin-top: 15px;
+}
+
+.tag {
+    display: inline-block;
+    background: #eef1ff;
+    color: var(--primary);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.7rem;
+    margin: 4px 4px 0 0;
+    cursor: pointer;
+}
+
+.preset-tags {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 25px;
+}
+
+.preset-tag {
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: white;
+    border: 1px solid #ddd;
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.preset-tag:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.preset-tag.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+
+.btn {
+    margin-top: 18px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-outline {
+    background: white;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    z-index: 999;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 650px;
+    border-radius: 20px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* HEADER FIXED SPACING */
+.modal-header h3 {
+    margin: 0;
+}
+
+#modalDate {
+    display: block;
+    font-size: 0.8rem;
+    color: #888;
+    margin: 12px 0 0 0;
+    line-height: 1.2;
+}
+
+/* CAROUSEL */
+.carousel {
+    position: relative;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 14px;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: none;
+}
+
+.carousel img.active {
+    display: block;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.carousel-btn.left { left: 10px; }
+.carousel-btn.right { right: 10px; }
+
+/* ABOUT */
+.about {
+    max-width: 700px;
+    margin: auto;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    font-size: 0.8rem;
+    opacity: 0.6;
+}
+
+.hidden {
+    display: none;
+}
+
+
+/* Container Layout */
+.about-section {
+    background: #f0f4f8; /* soft background color */
+    padding: 60px 20px;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.about-image img {
+    border-radius: 20px;
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.about-image img:hover {
+    transform: scale(1.05);
+}
+
+.about-text {
+    flex: 1;
+    max-width: 700px;
+}
+
+.about-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #a96af1; /* accent color */
+}
+
+.about-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.about-text .btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.about-text .btn:hover {
+    background-color: #4e00b3;
+    transform: translateY(-3px);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+    <strong>Larissa Domingo</strong>
+    <div>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+    </div>
+</nav>
+
+<header>
+    <h1>Larissa Domingo</h1>
+    <p>Marketing, analytics, and storytelling projects blending creativity with strategy.</p>
+</header>
+
+<section id="projects">
+<div class="container">
+
+    <div class="preset-tags">
+        <span class="preset-tag" data-filter="marketing">Marketing</span>
+        <span class="preset-tag" data-filter="data">Data</span>
+        <span class="preset-tag" data-filter="event">Event</span>
+        <span class="preset-tag" data-filter="featured">Featured</span>
+    </div>
+    
+    <div class="search-bar">
+        <div class="search-wrapper">
+            <input id="searchInput" type="text" placeholder="Search projects or skills...">
+            <button id="clearSearch" aria-label="Clear search">×</button>
+        </div>
+    </div>
+    
+
+    <div class="projects">
+
+        <div class="card" data-tags="data featured">
+            <h3>Web Development Personal Website</h3>
+            <p>Building a sleek, interactive personal website that showcases my skills, projects, and blog while turning complex code into seamless user experiences.</p>
+            <div class="tags">
+                <span class="tag">Featured</span>
+                <span class="tag">Data</span>
+
+                <span class="tag">HTML</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">Organization</span>
+                <span class="tag">Project Management</span>
+                <span class="tag">Detail-Oriented</span>
+                <span class="tag">Problem-Solving</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('portfolio')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="event featured">
+            <h3>Allergic Emma Awareness Campaign</h3>
+            <p>Leading a dynamic awareness campaign that transforms Allergic Emma’s advocacy into impactful events, strategic partnerships, and a growing community dedicated to food allergy education and safety.</p>
+            <div class="tags">
+                <span class="tag">Featured</span>
+                <span class="tag">Event</span>
+
+                <span class="tag">Instagram</span>
+                <span class="tag">CapCut</span>
+                <span class="tag">Google Forms</span>
+                <span class="tag">PowerPoint</span>
+                <span class="tag">Organization</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Collaboration</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('emma')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="marketing featured">
+            <h3>ASI Elections 2025</h3>
+            <p>Spearheaded a data-driven social media campaign that boosted student engagement, increased candidate applications by 45%, and surpassed voting goals, making the 2025 ASI Elections the most successful in recent years.</p>
+            <div class="tags">
+                <span class="tag">Featured</span>
+                <span class="tag">Marketing</span>
+
+                <span class="tag">Monday.com</span>
+                <span class="tag">MS Teams</span>
+                <span class="tag">Instagram</span>
+                <span class="tag">Hootsuite</span>
+                <span class="tag">Organization</span>
+                <span class="tag">Project Management</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Collaboration</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('elections')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="data">
+            <h3>Pitching Success Insights</h3>
+            <p>Analyzed pitcher performance data using Python to uncover key trends, revealing how birth month may influence success and delivering actionable insights for scouts and parents.</p>
+            <div class="tags">
+                <span class="tag">Data</span>
+
+                <span class="tag">Python</span>
+                <span class="tag">scikit-learning</span>
+                <span class="tag">pandas</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">Matplotlib</span>
+                <span class="tag">Google Slides</span>
+                <span class="tag">Project Management</span>
+                <span class="tag">Public Speaking</span>
+                <span class="tag">Strategic Thinking</span>
+                <span class="tag">Adaptability</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('pitching')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="data">
+            <h3>Flight Demand Analysis</h3>
+            <p>Led a team in a high-pressure flight data competition, uncovering demand patterns and delivering award-winning visual storytelling that informed scheduling and pricing strategies.</p>
+            <div class="tags">
+                <span class="tag">Data</span>
+
+                <span class="tag">Tableau</span>
+                <span class="tag">Python</span>
+                <span class="tag">pandas</span>
+                <span class="tag">NumPy</span>
+                <span class="tag">Matplotlib</span>
+                <span class="tag">Seaborn</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Google Slides</span>
+                <span class="tag">Data Cleansing</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Collaboration</span>
+                <span class="tag">Presentation</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('flight')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="data featured">
+            <h3>Introducing Premium Grocery Stores to Orange County, CA</h3>
+            <p>Spearheaded GIS-driven market analysis to identify optimal locations for premium grocery stores in Orange County, earning 2nd place in a competitive StoryMap competition.</p>
+            <div class="tags">
+                <span class="tag">Featured</span>
+                <span class="tag">Data</span>
+
+                <span class="tag">ArcGIS</span>
+                <span class="tag">ArcGIS Business Analyst</span>
+                <span class="tag">ArcGIS Story Maps</span>
+                <span class="tag">Public Speaking</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Teamwork</span>
+                <span class="tag">Collaboration</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('grocery')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="marketing featured">
+            <h3>BroncoFusion Campaign</h3>
+            <p>Directed a creative social media strategy that sold out BroncoFusion, secured a Grammy-nominated headliner, and drove engagement for over 5,000 students.</p>
+            <div class="tags">
+                <span class="tag">Featured</span>
+                <span class="tag">Marketing</span>
+
+                <span class="tag">Monday.com</span>
+                <span class="tag">MS Teams</span>
+                <span class="tag">Hootsuite</span>
+                <span class="tag">Canva</span>
+                <span class="tag">Instagram</span>
+                <span class="tag">Teamwork</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Organization</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('broncofusion')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="marketing">
+            <h3>Monday.com Social Media Calendar</h3>
+            <p>Engineered a robust Monday.com board with automations and SOPs, streamlining multi-platform content management for the entire social media team.</p>
+            <div class="tags">
+                <span class="tag">Marketing</span>
+
+                <span class="tag">Monday.com</span>
+                <span class="tag">Excel</span>
+                <span class="tag">MS Teams</span>
+                <span class="tag">Organization</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('mondaycom')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="data">
+            <h3>Video Game Analysis</h3>
+            <p>Led a team to first place by analyzing gaming data with Python and Tableau, identifying key sales drivers and providing actionable insights for a startup’s strategy.</p>
+            <div class="tags">
+                <span class="tag">Data</span>
+
+                <span class="tag">Python</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Google Slides</span>
+                <span class="tag">Public Speaking</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Teamwork</span>
+                <span class="tag">Collaboration</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('video')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="data featured">
+            <h3>SoCal Edison Power Outage Analysis</h3>
+            <p>Partnered with SCE to analyze extensive outage data, using predictive modeling to inform proactive maintenance and optimize operational efficiency.</p>
+            <div class="tags">
+                <span class="tag">Featured</span>
+                <span class="tag">Data</span>
+
+                <span class="tag">Python</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Google Slides</span>
+                <span class="tag">Public Speaking</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Teamwork</span>
+                <span class="tag">Collaboration</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('sce')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="data">
+            <h3>Hotel Reveiw Alteryx Analysis</h3>
+            <p>Predicted hotel ratings using Alteryx and Tableau, uncovering key amenities and seasonal trends to enhance customer satisfaction and secure 2nd place in a competition.</p>
+            <div class="tags">
+                <span class="tag">Data</span>
+
+                <span class="tag">Alteryx</span>
+                <span class="tag">Tableau</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Google Slides</span>
+                <span class="tag">Public Speaking</span>
+                <span class="tag">Teamwork</span>
+                <span class="tag">Collaboration</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('alteryx')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="marketing">
+            <h3>Making Every Move Count Marketing Project</h3>
+            <p>Developed a targeted marketing strategy for APEAA, creating campaigns and presentations that increased awareness and enrollment among aspiring K-12 PE teachers.</p>
+            <div class="tags">
+                <span class="tag">Marketing</span>
+
+                <span class="tag">Canva</span>
+                <span class="tag">Google Slides</span>
+                <span class="tag">Google Docs</span>
+                <span class="tag">Public Speaking</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Teamwork</span>
+                <span class="tag">Collaboration</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('apeaa')">Learn More</button>
+        </div>
+
+        <div class="card" data-tags="data">
+            <h3>Most Streamed Songs in 2023 SQL Analysis</h3>
+            <p>Analyzed over 950 music streaming entries with SQL, identifying key features and seasonal trends that informed strategic decisions for artists and labels.</p>
+            <div class="tags">
+                <span class="tag">Data</span>
+
+                <span class="tag">SQL</span>
+                <span class="tag">Google Slides</span>
+                <span class="tag">Zoom</span>
+                <span class="tag">ChatGPT</span>
+                <span class="tag">Public Speaking</span>
+                <span class="tag">Communication</span>
+                <span class="tag">Project Management</span>
+            </div>
+            <button class="btn btn-primary" onclick="openModal('sqlmusic')">Learn More</button>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<section id="about" class="about-section">
+    <div class="container about">
+      <div class="about-content">
+        <!-- Profile Image -->
+        <div class="about-image">
+          <img src="/Users/larissadomingo/Documents/NewWeb/profilepic.JPG" alt="Larissa Domingo" />
+        </div>
+  
+        <!-- Text Content -->
+        <div class="about-text">
+          <h2>About Me</h2>
+          <p>A marketing and data professional with a passion for turning ideas into meaningful experiences. Over the past few years, I’ve combined my love for creativity and analytics to plan large-scale events, lead social media campaigns, and create data-driven strategies that make an impact.</p>
+            <p>Outside of work, I enjoy exploring new ways to bring stories to life, whether it’s through innovative campaigns, interactive projects, or community initiatives like <em>Allergic Emma</em>. I thrive in collaborative environments where I can learn, grow, and inspire others with both insight and creativity.</p>
+          <a href="https://www.linkedin.com/in/larissadomingo/" class="btn btn-primary">Connect with Me!</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- MODAL -->
+<div class="modal" id="modal">
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h3 id="modalTitle"></h3>
+            <small id="modalDate"></small>
+        </div>
+
+        <p id="modalText"></p>
+
+        <div class="carousel" id="carousel">
+            <button class="carousel-btn left" onclick="prevImage()">‹</button>
+            <button class="carousel-btn right" onclick="nextImage()">›</button>
+        </div>
+
+        <div>
+            <a id="projectLink" target="_blank">
+                <button class="btn btn-outline">View Project</button>
+            </a>
+            <button class="btn btn-primary" onclick="closeModal()">Close</button>
+        </div>
+
+    </div>
+</div>
+
+<footer>
+    © 2026 Larissa Domingo
+</footer>
+
+<script>
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDate = document.getElementById('modalDate');
+    const modalText = document.getElementById('modalText');
+    const projectLink = document.getElementById('projectLink');
+    const carousel = document.getElementById('carousel');
+
+    
+    let images = [];
+    let index = 0;
+    
+    const projects = {
+        portfolio: {
+            title: "Web Development Personal Website",
+            date: "February 2025 - Ongoing",
+            text: "Designed and developed a dynamic personal portfolio website to showcase projects, achievements, and blog content. Built with HTML, CSS, and JavaScript, the site emphasizes responsive design, intuitive navigation, and strong user experience. Managed version control with GitHub and leveraged Visual Studio Code and AI-assisted tools to streamline development, troubleshoot issues, and continuously enhance performance through ongoing updates and refinements.",
+            link: "https://github.com/lndomingo/lndomingo.github.io/tree/main"
+        },
+
+        emma: {
+            title: "Allergic Emma Awareness Campaign",
+            date: "March 2022 - Ongoing",
+            text: "Supported the growth and impact of the Allergic Emma initiative by planning community events, creating educational content, and expanding social media engagement from 300 to over 2,000 followers. Contributed to partnerships, media features, and advocacy efforts that elevated Emma’s recognition and strengthened food allergy awareness. Collaborated with families, organizations, and local partners to deliver resources, host fundraisers, and build a supportive, informed community.",
+            link: "https://www.allergicemma.com/events",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/Allergic Emma/allergicemma1.jpg.webp",
+                "/Users/larissadomingo/Documents/NewWeb/images/Allergic Emma/allergicemma2.jpg.webp",
+                "/Users/larissadomingo/Documents/NewWeb/images/Allergic Emma/allergicemma3.jpg.webp"
+            ]
+        },
+
+        elections: {
+            title: "ASI Elections 2025",
+            date: "January 2025 - April 2025",
+            text: "Executed a strategic social media campaign to increase awareness and participation in the 2025 ASI Elections through targeted Instagram content, event promotion, and cross-department collaboration. Monitored engagement, responded to student inquiries, and used performance insights to refine messaging, contributing to a 45% rise in candidate applications and surpassing the voting goal by 16%. Leveraged project management and teamwork tools to deliver one of the most successful election campaigns to date.",
+            link: "https://asi.cpp.edu/student-government/elections/elections-a-to-z/",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/Elections 25/elections25-1.jpg",
+                "/Users/larissadomingo/Documents/NewWeb/images/Elections 25/elections25-2.jpg"
+            ]
+        },
+
+        pitching: {
+            title: "Pitching Success Insight",
+            date: "November 2024 - December 2024",
+            text: "Conducted a data analysis project examining MLB pitchers with strong performance metrics to uncover trends influencing success. Utilized Python and data science libraries to clean, merge, and visualize datasets, producing meaningful insights such as potential correlations between birth month and pitching performance. Strengthened skills in data cleaning, visualization, and strategic storytelling while presenting findings through clear visuals and concise analysis.",
+            link: "https://docs.google.com/presentation/d/1p5ljjvNw4qhA4d-O1WiDLzWrGMl_05Cd1a3zBcH9z7E/edit"
+        },
+
+        flight: {
+            title: "Flight Demand Analysis",
+            date: "November 2024",
+            text: "Led a team during a timed data analytics competition to examine flight demand patterns and pricing trends using Python and visualization tools. Directed data cleaning, statistical analysis, and insight generation that identified peak travel periods and pricing correlations, culminating in actionable airline recommendations. Earned “Best Storytelling” recognition for translating complex findings into a clear, compelling presentation while strengthening leadership and collaboration skills under pressure.",
+            link: "https://docs.google.com/presentation/d/1BfNTT7-UYk9xq3Bj7Xa-WDtN-6c0jhxCo5AeLTliY8M/edit?slide=id.gf053a51de0_0_0#slide=id.gf053a51de0_0_0",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/Flight/flight1.JPG",
+                "/Users/larissadomingo/Documents/NewWeb/images/Flight/flight2.JPG",
+                "/Users/larissadomingo/Documents/NewWeb/images/Flight/flight3.JPG"
+            ]
+        },
+
+        grocery: {
+            title: "Introducing Premium Grocery Stores to Orange County, CA",
+            date: "September 2024 - November 2024",
+            text: "Led a GIS-driven market feasibility study analyzing demographics, competition, and economic trends to identify optimal locations for premium grocery stores in Orange County. Applied advanced ArcGIS tools such as buffer analysis, spatial joins, and heat mapping to generate data-backed recommendations, culminating in an interactive StoryMap that earned 2nd place in competition. Strengthened spatial analysis, teamwork, and presentation skills while demonstrating the strategic value of location intelligence in business decision-making.",
+            link: "https://storymaps.arcgis.com/stories/aabd330f9f5b48d4bfefaecbf96e6798",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/Premium Grocery/grocery1.jpg",
+                "/Users/larissadomingo/Documents/NewWeb/images/Premium Grocery/grocery2.jpg"
+            ]
+        },
+
+        broncofusion: {
+            title: "BroncoFusion Campaign",
+            date: "March 2024 - August 2024",
+            text: "Led the social media strategy for ASI’s BroncoFusion event, creating engaging campaigns and multimedia content that generated strong excitement and helped draw over 5,000 students to the sold-out show. Developed a themed marketing rollout, coordinated cross-team collaboration, and managed a structured content calendar to maximize reach and participation. Strengthened leadership, creative direction, and project management skills while delivering one of the event’s most impactful promotional campaigns.",
+            link: "https://www.youtube.com/watch?si=82uknsuxUOoMzMro&v=QOaf6dQ5kLA&feature=youtu.be",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/BroncoFusion/broncofusion1.jpg",
+                "/Users/larissadomingo/Documents/NewWeb/images/BroncoFusion/broncofusion2.jpg",
+                "/Users/larissadomingo/Documents/NewWeb/images/BroncoFusion/broncofusion3.jpg"
+            ]
+        },
+
+        mondaycom: {
+            title: "Monday.com Social Media Campaign",
+            date: "March 2025 – August 2024",
+            text: "Designed and implemented a structured Monday.com workflow to manage and optimize content across multiple social media accounts, integrating automations and dashboards to support daily team operations. Developed a detailed SOP and streamlined approval processes to improve collaboration, consistency, and efficiency. Utilized performance insights to refine content strategy while strengthening leadership and project management skills.",
+            link: "https://monday.com"
+        },
+
+        video: {
+            title: "Video Game Analysis",
+            date: "February 2024",
+            text: "Led a team of four in a fast-paced analytics competition, using Python to clean data and build a regression model identifying key drivers of global video game sales. Created interactive Tableau visualizations and delivered a strategic presentation with actionable recommendations on genre focus and critic impact. The project earned 1st place recognition while strengthening skills in data analysis, storytelling, teamwork, and decision-making under pressure.",
+            link: "https://docs.google.com/presentation/d/1c2SUZMgo6hONlE9uScTSTZwNo1ac-BH96gFBwo4FD08/edit?slide=id.gd1bd6449de_0_36#slide=id.gd1bd6449de_0_36",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/Video/video1.jpeg",
+                "/Users/larissadomingo/Documents/NewWeb/images/Video/video2.jpeg"
+            ]
+        },
+
+        sce: {
+            title: "SoCal Edison Power Outage Analysis",
+            date: "January 2024 - May 2024",
+            text: "Collaborated with Southern California Edison to analyze large-scale outage data and uncover patterns impacting reliability and response time. Applied machine learning models to predict outage occurrences and identify key contributing factors, enabling proactive planning and resource optimization. Delivered data-driven recommendations and presented findings to leadership, strengthening real-world experience in predictive analytics, data storytelling, and strategic decision-making.",
+            link: "https://docs.google.com/presentation/d/1bweP2V-VE_hMxMlgr1Pf3KbJmEVU_IC84vdZ-sxtav4/edit?slide=id.g4dfce81f19_0_45#slide=id.g4dfce81f19_0_45",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/SoCal Edison/socaledison1.jpeg",
+                "/Users/larissadomingo/Documents/NewWeb/images/SoCal Edison/socaledison2.jpeg"
+            ]
+        },
+
+        alteryx: {
+            title: "Hotel Review Alteryx Analysis",
+            date: "December 2023",
+            text: "Led a predictive analysis of hotel reviews to determine key factors influencing Tripadvisor ratings. Utilized Alteryx for data cleansing, transformation, and modeling, complemented by Excel and Tableau for data handling and visualization. Discovered that amenities like free internet and pools significantly boosted ratings and identified seasonal trends affecting traveler feedback. Presented actionable insights under tight deadlines and gained hands-on experience with Alteryx tools during an Irvine office visit, securing 2nd place and strengthening skills in data analysis, modeling, and strategic communication.",
+            link: "https://docs.google.com/presentation/d/1_4QSAREI_35Jbmro4f-_RXJVycyKJH9P5aTtJQLwC8Y/edit?slide=id.p#slide=id.p",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/Alteryx/alteryx1.jpg",
+                "/Users/larissadomingo/Documents/NewWeb/images/Alteryx/alteryx2.jpg",
+                "/Users/larissadomingo/Documents/NewWeb/images/Alteryx/alteryx3.jpg"
+            ]
+        },
+
+        apeaa: {
+            title: "Making Every Move Count Marketing Proposal",
+            date: "September 2023 - December 2023",
+            text: "Partnered with APEAA program leaders to develop a targeted marketing strategy aimed at increasing awareness and enrollment for the Master’s program for aspiring K-12 PE teachers. Delivered monthly presentations to faculty and stakeholders, providing actionable recommendations based on in-depth observations of the program. Crafted campaigns highlighting benefits like career growth and salary potential, designed mock-ups for digital and print media, and proposed data-driven metrics to measure impact. Collaborated closely with stakeholders to ensure alignment with program goals, strengthening skills in communication, project management, and strategic marketing.",
+            link: "https://docs.google.com/presentation/d/15wBH_7HUVwxJrb8HJBUBIzqkgbfirzqvEGexfWbIdos/edit?slide=id.g298ce202ec2_0_2368#slide=id.g298ce202ec2_0_2368",
+            images: [
+                "/Users/larissadomingo/Documents/NewWeb/images/APEAA/apeaa1.jpeg",
+                "/Users/larissadomingo/Documents/NewWeb/images/APEAA/apeaa2.png",
+                "/Users/larissadomingo/Documents/NewWeb/images/APEAA/apeaa3.jpg"
+            ]
+        },
+
+        sqlmusic: {
+            title: "Most Streamed Songs in 2023 SQL Analysis",
+            date: "September 2023",
+            text: "Analyzed a dataset of over 950 entries from Spotify and Apple Music to uncover key trends in 2023 music streaming. Used advanced SQL techniques to clean, filter, and extract insights on features like danceability, energy, and valence. Found that Latin artists dominated Spotify while Korean groups led Apple Music, and that summer releases aligned with festival season achieved optimal performance. Provided strategic recommendations on musical features and release timing to maximize chart success. Strengthened SQL skills and applied data-driven insights to inform music industry strategies.",
+            link: "https://docs.google.com/presentation/d/1tJFjySAbn6jagZywwBr56NebEZf0O6T7OFmbHPpaFi0/edit?slide=id.g32fc7fa17be_0_1899#slide=id.g32fc7fa17be_0_1899"
+        }
+    };
+    
+    function openModal(key) {
+        const p = projects[key];
+    
+        modalTitle.innerText = p.title;
+        modalDate.innerText = p.date;
+        modalText.innerText = p.text;
+        projectLink.href = p.link;
+    
+        // Reset carousel
+        carousel.querySelectorAll('img').forEach(img => img.remove());
+        images = p.images || [];
+        index = 0;
+    
+        if (images.length === 0) {
+            carousel.style.display = 'none';
+        } else {
+            carousel.style.display = 'block';
+    
+            images.forEach((src, i) => {
+                const img = document.createElement('img');
+                img.src = src;
+                if (i === 0) img.classList.add('active');
+                carousel.appendChild(img);
+            });
+        }
+    
+        modal.style.display = 'flex';
+    }
+    
+    function closeModal() {
+        modal.style.display = 'none';
+    }
+    
+    function showImage(i) {
+        if (!images.length) return;
+        const imgs = carousel.querySelectorAll('img');
+        imgs.forEach(img => img.classList.remove('active'));
+        imgs[i].classList.add('active');
+    }
+    
+    function nextImage() {
+        if (!images.length) return;
+        index = (index + 1) % images.length;
+        showImage(index);
+    }
+    
+    function prevImage() {
+        if (!images.length) return;
+        index = (index - 1 + images.length) % images.length;
+        showImage(index);
+    }
+    
+    /* SEARCH + TAG FILTER */
+    const searchInput = document.getElementById('searchInput');
+    const cards = document.querySelectorAll('.card');
+    
+    searchInput.addEventListener('input', () => {
+        const val = searchInput.value.toLowerCase();
+        cards.forEach(card => {
+            card.classList.toggle('hidden', !card.innerText.toLowerCase().includes(val));
+        });
+    });
+    
+    document.querySelectorAll('.tag').forEach(tag => {
+        tag.addEventListener('click', () => {
+            searchInput.value = tag.innerText;
+            searchInput.dispatchEvent(new Event('input'));
+        });
+    });
+
+    const clearBtn = document.getElementById('clearSearch');
+
+searchInput.addEventListener('input', () => {
+    const val = searchInput.value.toLowerCase();
+    clearBtn.style.display = val ? 'block' : 'none';
+
+    cards.forEach(card => {
+        card.classList.toggle(
+            'hidden',
+            !card.innerText.toLowerCase().includes(val)
+        );
+    });
+});
+
+clearBtn.addEventListener('click', () => {
+    searchInput.value = '';
+    clearBtn.style.display = 'none';
+    searchInput.dispatchEvent(new Event('input'));
+});
+const presetTags = document.querySelectorAll('.preset-tag');
+
+presetTags.forEach(tag => {
+    tag.addEventListener('click', () => {
+        const isActive = tag.classList.contains('active');
+
+        // Remove all active states
+        presetTags.forEach(t => t.classList.remove('active'));
+
+        if (isActive) {
+            // If clicking same tag again → reset
+            searchInput.value = '';
+        } else {
+            tag.classList.add('active');
+            searchInput.value = tag.dataset.filter;
+        }
+
+        searchInput.dispatchEvent(new Event('input'));
+    });
+});
+
+    </script>
+    
